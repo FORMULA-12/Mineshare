@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+    <div class="page container">
+        <div class="row">
+            <form action="" method="post">
+                {% csrf_token %}
+                 <div class="col l12 m12 s12">
+                <div class="input-field support-input-name">
+                    <input id="support_username" name="name" placeholder="Имя" type="text" class="validate">
+                </div>
+
+                <div class="input-field support-input-email">
+                    <input id="support_email" name="email" placeholder="Почта" type="text" class="validate">
+                </div>
+
+                <div class="input-field support-input-description">
+                    <textarea id="support_description" name="text" class="materialize-textarea" data-length="1200" placeholder="Описание"></textarea>
+                </div>
+
+                <div class="center">
+                    <input type="submit" value="Отправить" class="support-button waves-effect waves-light btn">
+
+                </div>
+
+            </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock main %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="OuLnf6gXDYSzeSx81AZk9DSl4Ue3WXMFs7b6iEbso9E" />
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'CSS/materialize.min.css' %}" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="{% static 'CSS/styles.css' %}" media="screen,projection">
+
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/tt-norms-medium" type="text/css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/tt-norms-regular" type="text/css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="robots" content="noindex" />
+
+    <link rel="icon" href="{% static 'ASSETS/favicon.svg' %}">
+
+    <title>Mineshare - Лучший мониторинг серверов майнкрафт!</title>
+
+    <meta name="description" content="Мониторинг бесплатных серверов Майнкрафт с IP адресами, описаниями и полной статистикой. Лучший рейтинг в русском интернете, удобный поиск по постоянно обновляющейся базе из 5 тысяч отличных серверов!">
+    <meta name="keywords" content="майнкрафт, мониторинг, сервер, поиск, поиск серверов, список серверов, сервер майнкрафт">
+    <meta name="author" content="Kochkov Roman" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-210918680-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-210918680-1');
+    </script>
+</head>
+
+<body>
+
+    <div class="container error-container">
+        <p class="error-title">Ой, кажется вы потерялись!</p>
+        <p class="error-description">Страница, на которую вы хотели перейти, не найдена. Возможно, введен некорректный адрес или страница была удалена.</p>
+    </div>
+
+    <script type="text/javascript" src="{% static 'JS/materialize.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/jquery-3.6.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/support.js' %}"></script>
+</body>
+
+</html>

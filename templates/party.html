@@ -1,0 +1,38 @@
+{% extends 'base.html'  %}
+{% load static %}
+{% block main %}
+{% load mathfilters %}
+{% load paragraph %}
+
+    <div class="page container" style="padding-top:20px">
+        {% if invitations %}
+        {% for invite in invitations %}
+        <div class="row">
+            <div class="invite">
+                <div class="col xl9 l7 s12 invite-plate-one">
+                    <p class="invite-description text-color-gray">{{ invite.description|linebreaksbr }}</p>
+                </div>
+                <div class="col xl3 l5 s12 invite-plate-support">
+                    <div class="invite-plate-date">
+                        <p>{{ invite.date|timesince|time_translate }}</p>
+                    </div>
+                    <div class="invite-plate-two" style="cursor:pointer" onclick="window.open('discord:/users/{{ invite.userid }}','_blank');">
+                      <img src="{% static 'ASSETS/discord.svg' %}"><h6 id="{{ invite.id }}" class="center">{{ invite.username }}#{{ invite.usertag }}</h6>
+                    </div>
+                    <div class="invite-plate-three">
+                      <h6 id="{{ invite.id }}" class="center">{{ invite.get_topic_display }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="server-container-servers-empty">
+            <img class="privatearea-container-panel-servers-picture-empty" src="{% static 'ASSETS/cloud-empty.svg' %}">Ничего нет!
+        </div>
+        {% endif %}
+
+    </div>
+
+
+{% endblock main %}

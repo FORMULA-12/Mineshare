@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="{% static 'CSS/materialize.min.css' %}" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="{% static 'CSS/styles.css' %}" media="screen,projection">
+
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/tt-norms-medium" type="text/css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/tt-norms-regular" type="text/css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+
+    <meta name="description" content="Мониторинг бесплатных серверов Майнкрафт с IP адресами, описаниями и полной статистикой. Лучший рейтинг в русском интернете, удобный поиск по постоянно обновляющейся базе из 5 тысяч отличных серверов!">
+    <meta name="keywords" content="майнкрафт, мониторинг, сервер, поиск, поиск серверов, список серверов, сервер майнкрафт">
+
+    <link rel="icon" href="{% static 'ASSETS/favicon.svg' %}">
+    <title>Mineshare | Режим редактирования</title>
+</head>
+
+<body>
+
+    <div class="serverpagecreate-head container">
+        <p>Режим редактирования</p>
+    </div>
+ <form id="edit_form" action="" method="post" enctype="multipart/form-data">
+    <div class="page container">
+
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col l12 m12 s12">
+                <div class="serverpagecreate-title">
+                    <input placeholder="Без названия" id="name" name="name" value="{{server.name}}" />
+                </div>
+            </div>
+
+            <div class="col l12 m12 s12">
+                <textarea maxlength="1600" placeholder="Описание" id="desc" name="desc" onkeyup="textAreaAdjust(this)" class="serverpagecreate-description">{{ server.description }}</textarea>
+            </div>
+
+            <div class="col l4 m4 s12">
+                <div class="serverpage-type">
+                    <i onclick="$(this).next().click()" class="arrow-left material-icons">chevron_left</i>
+                    <p onclick="changeType(this,'type')">{{ server.get_mode_display }}</p><input name="get_type" id="type" class="hidden" value="{{ server.get_mode_display }}" readonly>
+                    <i onclick="$(this).prev().prev().click()" class="arrow-right material-icons">chevron_right</i>
+                </div>
+            </div>
+
+            <div class="col l4 m4 s12">
+                <div class="serverpage-version">
+                    <i onclick="$(this).next().click()" class="arrow-left material-icons">chevron_left</i>
+                    <p onclick="changeVersion(this,'version')">{{ server.get_version_display }}</p><input name="get_version" id="version" class="hidden" value="{{ server.get_version_display }}" readonly>
+                    <i onclick="$(this).prev().prev().click()" class="arrow-right material-icons">chevron_right</i>
+                </div>
+            </div>
+
+            <div class="col l4 m4 s12">
+                <div class="serverpage-license">
+                    <i onclick="$(this).next().click()" class="arrow-left material-icons">chevron_left</i>
+                    {% if not server.license %}
+                    <p onclick="changeLicense(this,'license')">Без лицензии</p><input name="get_license" id="license" class="hidden" value="Без лицензии" readonly>
+                    {% else %}
+                    <p onclick="changeLicense(this,'license')">Лицензия</p><input name="get_license" id="license" class="hidden" value="Лицензия" readonly>
+                    {% endif %}
+                    <i onclick="$(this).prev().prev().click()" class="arrow-right material-icons">chevron_right</i>
+                </div>
+            </div>
+
+            <div class="col l12 m12 s12 ">
+                <div id="tags" class="serverpagecreate-tags center">
+                    {% for tag in tags_all %}
+                    {% if tag in tags_server %}
+                    <div class="chip">
+                        <label>
+                            <input type="checkbox" name = "tag_{{ tag.id }}"  class="filled-in" checked="checked"/>
+                            <span>{{ tag.title }}</span>
+                        </label>
+                    </div>
+                    {% else %}
+                    <div class="chip">
+                        <label>
+                            <input type="checkbox" name="tag_{{ tag.id }}" class="filled-in" />
+                            <span>{{ tag.title }}</span>
+                        </label>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <style>#text, #id_title, .file-path-wrapper a, .file-path-wrapper br {visibility:hidden;position:absolute} </style>
+            <div class="col l6 m12 s12">
+                <div class="serverpage-picture">
+                    <p id="something">Изображение (Баннер)</p>
+                    <div class="file-field input-field">
+                        <div onclick="document.getElementById('id_image').click();" class="btn waves-effect waves-light">
+                            <span>Добавить</span>
+                        </div>
+                        <div class="file-path-wrapper prefix-clear">
+                            <input class="file-path validate" type="text" placeholder="Картинка (380 x 80)">
+                            {{ form_picture }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col l6 m12 s12">
+                <div class="serverpage-illustration">
+                    <p>Иллюстрации ({% if server.illustrations.count == 0 %}О проекте{% else %}{{ server.illustrations.count }} загружено{% endif %})</p>
+                    <div class="file-field input-field">
+                        <div class="btn waves-effect waves-light">
+                            <span>Добавить</span>
+                            <input id="id_illustration" name="illustrations" type="file" accept=".png, .jpg, .jpeg" multiple>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="До 6-ти изображений">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col l6 m12 s12">
+                <div class="serverpage-launcher">
+                    <p>Лаунчер (Если свой)</p>
+                    <div class="input-field input-website">
+                        <input placeholder="Ссылка на сайт (для скачивания)" name="website" id="website" type="url" class="validate" maxlength="80" value="{{ server.website }}">
+                    </div>
+                </div>
+            </div>
+
+            {% if server.premium_status %}
+            <div class="col l6 m12 s12">
+                <div class="serverpage-gradient">
+                    <p id="gradient-text">Текущий градиент: {{ server.premium_color }}</p><input name="gradient_color" id="gradient" class="hidden" value="{{ server.premium_color }}" readonly>
+
+                    <div class="row">
+                        <div class="col l2 m2 s4">
+                            <div onclick="changeGradient('Голубой')" class="serverpage-gradient-blue"></div>
+                        </div>
+                        <div class="col l2 m2 s4">
+                            <div onclick="changeGradient('Красный')" class="serverpage-gradient-red"></div>
+                        </div>
+                        <div class="col l2 m2 s4">
+                            <div onclick="changeGradient('Фиолетовый')" class="serverpage-gradient-purple"></div>
+                        </div>
+                        <div class="col l2 m2 s4">
+                            <div onclick="changeGradient('Оранжевый')" class="serverpage-gradient-orange"></div>
+                        </div>
+                        <div class="col l2 m2 s4">
+                            <div onclick="changeGradient('Зеленый')" class="serverpage-gradient-green"></div>
+                        </div>
+                        <div class="col l2 m2 s4">
+                            <div onclick="changeGradient('Розовый')" class="serverpage-gradient-pink"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <div class="serverpagecreate-footer container">
+        <div class="center">
+            <input id="edit_save" type="submit" class="button-save waves-effect waves-light btn" value="Сохранить">
+        </div>
+    </div>
+
+</form>
+
+    <div style="width: 100%; height: 10px;"></div>
+
+    <script type="text/javascript" src="{% static 'JS/materialize.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/jquery-3.6.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/support.js' %}"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            element = document.getElementById("desc");
+            element.style.height = "1px";
+            element.style.height = (2 + element.scrollHeight) + "px";
+
+            var elements = document.getElementsByClassName('prefix-clear');
+            elements[0].innerHTML = elements[0].innerHTML.replace(/:/g,'');
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+{% load paragraph %}
+{% load mathfilters %}
+    <div class="page container">
+        {% for desc in server %}
+        <div class="row">
+            <div class="col l12 m12 s12">
+                <p class="serverpage-title">{{ desc.name }}{% if desc.verification %}<i class="serverpage-verification-icon material-icons right tooltipped" data-position="top" data-tooltip="Верифицированный проект">verified_user</i>{% endif %}</p>
+            </div>
+
+            <div class="col l9 m12 s12">
+                <div class="serverpage-description">
+                    {{ desc.description|linebreaks }}
+                </div>
+            </div>
+
+            <div class="col l3 m4 s6">
+                <div class="serverpage-status">
+                    <div class="tooltip hide-on-med-and-down"><svg class="arrow" viewBox="0 0 54 54"><path style="fill:#11B2FF;" d="M14.456,26.159l21.087-12.175C36.191,13.611,37,14.078,37,14.825v24.349c0,0.747-0.809,1.215-1.456,0.841L14.456,27.841C13.809,27.467,13.809,26.533,14.456,26.159z"/></svg>Статус</div>
+                    {% if desc.online_status %}
+                    <p><i class="material-icons serverpage-status-icon-online">brightness_1</i>&nbsp;&nbsp;Онлайн</p>
+                    {% else %}
+                    <p><i class="material-icons serverpage-status-icon-offline">brightness_1</i>&nbsp;&nbsp;Оффлайн</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col l3 m4 s6">
+                <div class="serverpage-online">
+                <div class="tooltip hide-on-med-and-down"><svg class="arrow" viewBox="0 0 54 54"><path style="fill:#11B2FF;" d="M14.456,26.159l21.087-12.175C36.191,13.611,37,14.078,37,14.825v24.349c0,0.747-0.809,1.215-1.456,0.841L14.456,27.841C13.809,27.467,13.809,26.533,14.456,26.159z"/></svg>Онлайн</div>
+                    {% if desc.current_players > desc.max_players %}
+                    <p>{{ desc.current_players }} из {{ desc.current_players|add:1 }}</p>
+                    {% else %}
+                    <p>{{ desc.current_players }} из {{ desc.max_players }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col l3 m4 s12">
+                <div class="serverpage-rating">
+                    <div class="tooltip hide-on-med-and-down"><svg class="arrow" viewBox="0 0 54 54"><path style="fill:#11B2FF;" d="M14.456,26.159l21.087-12.175C36.191,13.611,37,14.078,37,14.825v24.349c0,0.747-0.809,1.215-1.456,0.841L14.456,27.841C13.809,27.467,13.809,26.533,14.456,26.159z"/></svg>Рейтинг</div>
+                    <p><img class="serverpage-rating-icon" src="{% static 'ASSETS/star.svg' %}">&nbsp;&nbsp;{{ desc.rate }}</p>
+                </div>
+            </div>
+
+            <div class="col l3 m4 s12">
+                <div class="serverpage-version">
+                    <div class="tooltip hide-on-med-and-down"><svg class="arrow" viewBox="0 0 54 54"><path style="fill:#11B2FF;" d="M14.456,26.159l21.087-12.175C36.191,13.611,37,14.078,37,14.825v24.349c0,0.747-0.809,1.215-1.456,0.841L14.456,27.841C13.809,27.467,13.809,26.533,14.456,26.159z"/></svg>Версия</div>
+                    <p>{{ desc.get_version_display }}</p>
+                </div>
+            </div>
+
+            <div class="col l3 m4 s12">
+                <div class="serverpage-type">
+                    <div class="tooltip hide-on-med-and-down"><svg class="arrow" viewBox="0 0 54 54"><path style="fill:#11B2FF;" d="M14.456,26.159l21.087-12.175C36.191,13.611,37,14.078,37,14.825v24.349c0,0.747-0.809,1.215-1.456,0.841L14.456,27.841C13.809,27.467,13.809,26.533,14.456,26.159z"/></svg>Режим</div>
+                    <p>{{ desc.get_mode_display }}</p>
+                </div>
+            </div>
+
+            <div class="col l3 m4 s12">
+                <div class="serverpage-license">
+                    {% if desc.license == True %}
+                    <p>Лицензия</p>
+                    {% else %}
+                    <p>Без лицензии</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if tags %}
+            <div class="col l12 m12 s12">
+                <div class="serverpage-tags center">
+                    {% for tag in tags %}
+                        <div class="chip" style="pointer-events:none;">{{ tag.title }}<i class="close material-icons">{{ tag.icon }}</i></div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if illustrations.count == 5 %}
+            <div class="col l6 m6 s12">
+                <div class="serverpage-illustration-vs">
+                    <img class="materialboxed" src="{% static 'media/' %}{{ illustrations.0.image }}">
+                </div>
+            </div>
+            <div class="col l6 m6 s12">
+                <div class="serverpage-illustration-vs">
+                    <img class="materialboxed" src="{% static 'media/' %}{{ illustrations.1.image }}">
+                </div>
+            </div>
+            <div class="col l4 m6 s12">
+                <div class="serverpage-illustration-vs">
+                    <img class="materialboxed" src="{% static 'media/' %}{{ illustrations.2.image }}">
+                </div>
+            </div>
+            <div class="col l4 m6 s12">
+                <div class="serverpage-illustration-vs">
+                    <img class="materialboxed" src="{% static 'media/' %}{{ illustrations.3.image }}">
+                </div>
+            </div>
+            <div class="col l4 m6 s12">
+                <div class="serverpage-illustration-vs">
+                    <img class="materialboxed" src="{% static 'media/' %}{{ illustrations.4.image }}">
+                </div>
+            </div>
+            {% elif illustrations.count|mod:3 == 0 %}
+            {% for illustration in illustrations %}
+            <div class="col l4 m6 s12">
+                <div class="serverpage-illustration-vs">
+                    <img class="materialboxed" src="{% static 'media/' %}{{ illustration.image }}">
+                </div>
+            </div>
+            {% endfor %}
+            {% elif illustrations.count|mod:2 == 0 %}
+            {% for illustration in illustrations %}
+            <div class="col l6 m6 s12">
+                <div class="serverpage-illustration-vs">
+                    <img class="materialboxed" src="{% static 'media/' %}{{ illustration.image }}">
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            {% for illustration in illustrations %}
+            <div class="col l12 m12 s12">
+                <div class="serverpage-illustration-vs">
+                    <img class="materialboxed" src="{% static 'media/' %}{{ illustration.image }}">
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+

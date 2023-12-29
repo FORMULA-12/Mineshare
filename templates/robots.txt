@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://minecraftshare.ru/sitemap.xml
+

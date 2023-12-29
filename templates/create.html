@@ -1,0 +1,115 @@
+{% load static %}
+{% block main %}
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="{% static 'CSS/materialize.min.css' %}" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="{% static 'CSS/styles.css' %}" media="screen,projection">
+
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/tt-norms-medium" type="text/css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/tt-norms-regular" type="text/css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+
+    <meta name="description" content="Мониторинг бесплатных серверов Майнкрафт с IP адресами, описаниями и полной статистикой. Лучший рейтинг в русском интернете, удобный поиск по постоянно обновляющейся базе из 5 тысяч отличных серверов!">
+    <meta name="keywords" content="майнкрафт, мониторинг, сервер, поиск, поиск серверов, список серверов, сервер майнкрафт">
+    <meta name="author" content="Andreichanka Dziana, Kochkov Roman, Vassilevskiy Mark" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-210918680-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-210918680-1');
+    </script>
+
+    <link rel="icon" href="{% static 'ASSETS/favicon.svg' %}">
+    <title>Mineshare - Лучший мониторинг серверов!</title>
+</head>
+
+<body>
+    <div class="serverpagecreate-head container">
+        <p>Создание сервера</p>
+    </div>
+<form action="" method="post">
+
+    {% csrf_token %}
+
+    <div class="page container">
+
+        <div class="row">
+            <div class="col l12 m12 s12">
+                <div class="serverpagecreate-title">
+                    <input placeholder="Без названия" name="name" id="name" value="{{name.name}}" />
+                </div>
+            </div>
+
+            <div class="col l12 m12 s12">
+                <textarea maxlength="1600" id="desc" name="desc" placeholder="Описание" onkeyup="textAreaAdjust(this)" class="serverpagecreate-description"></textarea>
+            </div>
+
+            <div class="col l4 m4 s12">
+                <div class="serverpage-type">
+                    <p onclick="changeType(this,'type')">Ванилла</p><input name="get_type" id="type" class="hidden" value="Ванилла" readonly>
+                </div>
+            </div>
+
+            <div class="col l4 m4 s12">
+                <div class="serverpage-version">
+                    <p onclick="changeVersion(this,'version')">1.19.X</p><input name="get_version" id="version" class="hidden" value="1.19.X" readonly>
+                </div>
+            </div>
+
+            <div class="col l4 m4 s12">
+                <div class="serverpage-license">
+                    <p onclick="changeLicense(this,'license')">Без лицензии</p><input name="get_license" id="license" class="hidden" value="Без лицензии" readonly>
+                </div>
+            </div>
+
+            <div class="col l12 m12 s12 ">
+                <div class="serverpagecreate-tags center">
+
+                    {% for tag in tags_all %}
+                    <div class="chip">
+                        <label>
+                            <input type="checkbox" name="tag_{{ tag.id }}" class="filled-in" />
+                            <span>{{ tag.title }}</span>
+                        </label>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="serverpagecreate-footer container">
+        <div class="center">
+            <input id="create-publish" onmouseenter="document.getElementById(this).focus();" type="submit" class="button-publish waves-effect waves-light btn" value="Опубликовать">
+        </div>
+    </div>
+</form>
+    <div style="width: 100%; height: 10px;"></div>
+
+    <script type="text/javascript" src="{% static 'JS/materialize.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/jquery-3.6.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/support.js' %}"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            element = document.getElementById("desc");
+            element.style.height = "1px";
+            element.style.height = (2 + element.scrollHeight) + "px";
+        };
+    </script>
+</body>
+
+</html>
+
+{% endblock main %}
+

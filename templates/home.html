@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+
+    <div class="container home-main">
+        <div class="row">
+            <div class="col l6 m12 s12">
+                <h1 class="home-main-title">Лучший Мониторинг<br>Серверов Minecraft</h1>
+                <p class="home-main-subtitle">Найди сервер, который будет тебе по душе, среди<br>огромного количества уникальных миров. У нас есть<br> только одно правило - будь тем, кем ты хочешь!</p>
+                <div class="home-main-button-support"><a class="home-main-button waves-effect waves-light btn" href="{% url 'servers:servers' %}">Список серверов</a></div>
+            </div>
+
+            <div class="col l6 hide-on-small-and-down right">
+                <img class="home-main-picture home-main-picture-animation" alt="Мониторинг" src="{% static 'ASSETS/home-main-picture.svg' %}">
+            </div>
+        </div>
+    </div>
+
+    <div class="container home-benefits">
+        <div class="row">
+            <div class="col l12 s12">
+                <p class="home-benefits-title">Можно даже больше!</p>
+                <p class="home-benefits-subtitle">Добавь свой сервер и начни продвигать его прямо сейчас, чтобы<br> увидеть прирост онлайна уже завтра!</p>
+            </div>
+            <div class="col l6 m12 s12">
+                <div class="row">
+                    <div class="col l2 m1 s2"></div>
+                    <div class="col l9 m10 s12 home-benefits-servercreate">
+                        <div class="home-benefits-servercreate-title">
+                            <p>Добавить сервер</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons left">done</i>
+                            <p>Удобное управление сервером</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons left">done</i>
+                            <p>Современная рейтинговая система</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons left">done</i>
+                            <p>Моментальное обновление данных</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons material-icons-error left">close</i>
+                            <p>Персонализированная кастомизация</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons material-icons-error left">close</i>
+                            <p>Ускоренное продвижение сервера</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons material-icons-error left">close</i>
+                            <p>Анимированная фотоиллюстрация</p>
+                        </div>
+                    </div>
+                    <div class="col l1 m1 s2"></div>
+                </div>
+            </div>
+            <div class="col l6 m12 s12">
+                <div class="row">
+                    <div class="col l1 m1 s2"></div>
+                    <div class="col l9 m10 s12 home-benefits-serverpromote">
+                        <div class="home-benefits-serverpromote-title">
+                            <p>Раскрутить сервер</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons left">done</i>
+                            <p>Удобное управление сервером</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons left">done</i>
+                            <p>Современная рейтинговая система</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons left">done</i>
+                            <p>Моментальное обновление данных</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons left">done</i>
+                            <p>Персонализированная кастомизация</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons left">done</i>
+                            <p>Ускоренное продвижение сервера</p>
+                        </div>
+                        <div class="home-benefits-container">
+                            <i class="material-icons left">done</i>
+                            <p>Анимированная фотоиллюстрация</p>
+                        </div>
+                    </div>
+                    <div class="col l2 m1 hide-on-med-and-down"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

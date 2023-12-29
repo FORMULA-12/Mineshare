@@ -1,0 +1,26 @@
+{% extends 'base.html'  %}
+{% load static %}
+{% block main %}
+{% load mathfilters %}
+{% load paragraph %}
+
+    <div class="page-pictures container">
+        {% if pictures %}
+        <div class="row">
+            {% for picture in pictures %}
+            <div class="col xl3 l4 m6 s12">
+                <img class="pictures-img" alt="Сервера майнкрафт - {{ picture.title|upper }}" src="{% static 'media/' %}{{ picture.image }}">
+                <p class="pictures-url"><a  href="{{ picture.url }}">{{ picture.title|upper }}</a></p>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="server-container-servers-empty">
+            <img class="privatearea-container-panel-servers-picture-empty" src="{% static 'ASSETS/cloud-empty.svg' %}">Ничего нет!
+        </div>
+        {% endif %}
+
+    </div>
+
+
+{% endblock main %}

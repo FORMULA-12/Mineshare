@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block main %}
+{% load static %}
+    <div class="container shop-subscription">
+
+        <div class="row">
+            <div class="col l12 m12 s12">
+                <div class="shop-subscription-premium">
+                    <h1 class="shop-subscription-premium-title">Не хватает онлайна? Оформи PREMIUM подписку!</h1>
+                    <object class="shop-subscription-picture hide-on-small-and-down" width="100%" type="image/svg+xml" data="{% static 'ASSETS/premium-card.svg' %}"></object>
+                    <object class="shop-subscription-picture hide-on-med-and-up" width="100%" type="image/svg+xml" data="{% static 'ASSETS/premium-card-mobile.svg' %}" style="margin-bottom:-5px;"></object>
+                </div>
+            </div>
+
+            <div class="col l3 m6 s12">
+                <div class="shop-subscription-benefits">
+                    <p class="shop-subscription-benefits-title-picture">Гифки</p>
+                    <p class="shop-subscription-benefits-description-picture">Возможность поставить собственную GIF-анимацию вместо картинки</p>
+                </div>
+            </div>
+
+            <div class="col l3 m6 s12">
+                <div class="shop-subscription-benefits">
+                    <p class="shop-subscription-benefits-title-color">Градиент</p>
+                    <p class="shop-subscription-benefits-description-color">Выбери один из градиентов, чтобы выделиться среди отсальных проектов</p>
+                </div>
+            </div>
+
+            <div class="col l3 m6 s12">
+                <div class="shop-subscription-benefits">
+                    <p class="shop-subscription-benefits-title-factor">Множитель</p>
+                    <p class="shop-subscription-benefits-description-factor">Ускоренный рост популярности сервера, при помощи множителя очков</p>
+                </div>
+            </div>
+
+            <div class="col l3 m6 s12">
+                <div class="shop-subscription-benefits">
+                    <p class="shop-subscription-benefits-title-rating">Рейтинг</p>
+                    <p class="shop-subscription-benefits-description-rating">Дополнительные рейтинговые быллы, которые продвинут статус проекта</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock main %}

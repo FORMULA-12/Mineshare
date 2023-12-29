@@ -1,0 +1,258 @@
+{% extends 'base.html'  %}
+{% load static %}
+{% block main %}
+{% load mathfilters %}
+
+    {% if not user.is_authenticated %}
+    <div id="welcome-servers" class="welcome-servers hide-on-small-only">
+        <div class="close-icon" onclick="$('#welcome-servers').fadeOut(200);">
+            <img src="{% static 'ASSETS/close.svg' %}">
+        </div>
+        <p>Привет&nbsp;&nbsp;<img src="https://em-content.zobj.net/thumbs/120/apple/325/waving-hand_1f44b.png"><br>Хочешь добавить свой сервер?</p>
+        <div class="chip modal-trigger" href="#authorization" style="user-select:none;cursor:pointer;" onclick="regTab();$('#welcome-servers').fadeOut(200);">Регистрация<i class="close material-icons">chevron_right</i></div>
+    </div>
+    {% endif %}
+
+    <div class="party-container container hide-on-med-and-down">
+        <p class="tournament-subtitle"><span>—————</span> ТУРНИР <span>—————<br></span></p>
+        <p class="tournament-title"><span style="background: radial-gradient(circle at 10% 20%, rgb(238, 56, 56) 0%, rgba(206, 21, 0, 0.92) 90.1%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;color:#ff0033">BED</span>WARS</p>
+        <p class="tournament-line"><span>—————</span>—————<span>—————<br></span></p>
+        <a class="party-button waves-effect waves-light btn" href="{% url 'tournaments:bedwars' %}">Подробнее</a>
+    </div>
+
+    <div class="search-container container">
+        <div class="row">
+            <div class="col l12 s12">
+                <form action="" style="background:#fff;margin-right: -10px;margin-left: -10px;border-radius: 12px;box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);" method="get">
+                    <div class="input-field input-search">
+                        <input name="search" id="search" type="search" required>
+                        <label class="label-icon icon-search right" for="search"><i class="material-icons">search</i></label>
+                    </div>
+                </form>
+            </div>
+            <div style="margin-left: -10px;margin-right: -10px;">
+                <div class="col l2 m4 s6">
+                    <form id="form_version" action="" method="get"><input id="get_version" name="version" class="hidden">
+                    <ul id="dropdown-filter-version" class="dropdown-content">
+                        <li onclick="document.getElementById('get_version').value = '1.19';document.getElementById('form_version').submit();"><a>1.19.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.18';document.getElementById('form_version').submit();"><a>1.18.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.17';document.getElementById('form_version').submit();"><a>1.17.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.16';document.getElementById('form_version').submit();"><a>1.16.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.15';document.getElementById('form_version').submit();"><a>1.15.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.14';document.getElementById('form_version').submit();"><a>1.14.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.13';document.getElementById('form_version').submit();"><a>1.13.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.12';document.getElementById('form_version').submit();"><a>1.12.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.11';document.getElementById('form_version').submit();"><a>1.11.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.10';document.getElementById('form_version').submit();"><a>1.10.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.9';document.getElementById('form_version').submit();"><a>1.9.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.8';document.getElementById('form_version').submit();"><a>1.8.X</a></li>
+                        <li onclick="document.getElementById('get_version').value = '1.7';document.getElementById('form_version').submit();"><a>1.7.X</a></li>
+                    </ul>
+                    </form>
+                    <div class="filter-version" onclick="openFilter('filter-version')">
+                        <a id="filter-version" class="dropdown-trigger" data-target="dropdown-filter-version">Версия</a>
+                    </div>
+                </div>
+                <div class="col l2 m4 s6">
+                    <form id="form_mode" action="" method="get"><input id="get_mode" name="mode" class="hidden">
+                    <ul id="dropdown-filter-type" class="dropdown-content">
+                        <li onclick="document.getElementById('get_mode').value = 'VANILLA';document.getElementById('form_mode').submit();"><a>Ванилла</a></li>
+                        <li onclick="document.getElementById('get_mode').value = 'ANARCHY';document.getElementById('form_mode').submit();"><a>Анархия</a></li>
+                        <li onclick="document.getElementById('get_mode').value = 'MMORPG';document.getElementById('form_mode').submit();"><a>MMO-RPG</a></li>
+                        <li onclick="document.getElementById('get_mode').value = 'MINIGAMES';document.getElementById('form_mode').submit();"><a>Мини-игры</a></li>
+                        <li onclick="document.getElementById('get_mode').value = 'ADVENTURE';document.getElementById('form_mode').submit();"><a>Приключение</a></li>
+                        <li onclick="document.getElementById('get_mode').value = 'CONSTRUCTION';document.getElementById('form_mode').submit();"><a>Строительство</a></li>
+                    </ul>
+                    </form>
+                    <div class="filter-type" onclick="openFilter('filter-type')">
+                        <a id="filter-type" class="dropdown-trigger" data-target="dropdown-filter-type">Режим</a>
+                    </div>
+                </div>
+                <div class="col l2 m4 s6">
+                    <form id="form_attribute" action="" method="get"><input id="get_attribute" name="attribute" class="hidden">
+                    <ul id="dropdown-filter-peculiarities" class="dropdown-content">
+                        <li onclick="document.getElementById('get_attribute').value='Кланы';document.getElementById('form_attribute').submit();"><a>Кланы</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Кейсы';document.getElementById('form_attribute').submit();"><a>Кейсы</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Работа';document.getElementById('form_attribute').submit();"><a>Работа</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Друзья';document.getElementById('form_attribute').submit();"><a>Друзья</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Свадьбы';document.getElementById('form_attribute').submit();"><a>Свадьбы</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Магазин';document.getElementById('form_attribute').submit();"><a>Магазин</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Питомцы';document.getElementById('form_attribute').submit();"><a>Питомцы</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Креатив';document.getElementById('form_attribute').submit();"><a>Креатив</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Проходка';document.getElementById('form_attribute').submit();"><a>Проходка</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Экономика';document.getElementById('form_attribute').submit();"><a>Экономика</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Праздники';document.getElementById('form_attribute').submit();"><a>Праздники</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Транспорт';document.getElementById('form_attribute').submit();"><a>Транспорт</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Гриферство';document.getElementById('form_attribute').submit();"><a>Гриферство</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Текстурпак';document.getElementById('form_attribute').submit();"><a>Текстурпак</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Геолокация';document.getElementById('form_attribute').submit();"><a>Геолокация</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Без доната';document.getElementById('form_attribute').submit();"><a>Без доната</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Без привата';document.getElementById('form_attribute').submit();"><a>Без привата</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Без античита';document.getElementById('form_attribute').submit();"><a>Без античита</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Без креатива';document.getElementById('form_attribute').submit();"><a>Без креатива</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Зимний сезон';document.getElementById('form_attribute').submit();"><a>Зимний сезон</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Голосовой чат';document.getElementById('form_attribute').submit();"><a>Голосовой чат</a></li>
+                        <li onclick="document.getElementById('get_attribute').value='Система рангов';document.getElementById('form_attribute').submit();"><a>Система рангов</a></li>
+                    </ul>
+                    </form>
+                    <div class="filter-peculiarities" onclick="openFilter('filter-peculiarities')">
+                        <a id="filter-peculiarities" class="dropdown-trigger" data-target="dropdown-filter-peculiarities">Атрибуты</a>
+                    </div>
+                </div>
+                <div class="col l2 m4 s6">
+                    <form id="form_online" action="" method="get"><input id="get_online" name="online" class="hidden">
+                    <ul id="dropdown-filter-online" class="dropdown-content">
+                        <li onclick="document.getElementById('get_online').value = 'Больше';document.getElementById('form_online').submit();"><a>Больше</a></li>
+                        <li onclick="document.getElementById('get_online').value = 'Меньше';document.getElementById('form_online').submit();"><a>Меньше</a></li>
+                    </ul>
+                    </form>
+                    <div class="filter-online" onclick="openFilter('filter-online')">
+                        <a id="filter-online" class="dropdown-trigger" data-target="dropdown-filter-online">Онлайн</a>
+                    </div>
+                </div>
+                <div class="col l2 m4 s6">
+                    <form id="form_rate" action="" method="get"><input id="get_rate" name="rate" class="hidden">
+                    <ul id="dropdown-filter-rating" class="dropdown-content">
+                        <li onclick="document.getElementById('get_rate').value = 'Больше';document.getElementById('form_rate').submit();"><a>Больше</a></li>
+                        <li onclick="document.getElementById('get_rate').value = 'Меньше';document.getElementById('form_rate').submit();"><a>Меньше</a></li>
+                    </ul>
+                    </form>
+                    <div class="filter-rating" onclick="openFilter('filter-rating')">
+                        <a id="filter-rating" class="dropdown-trigger" data-target="dropdown-filter-rating">Рейтинг</a>
+                    </div>
+                </div>
+                <div class="col l2 m4 s6">
+                    <form id="form_date" action="" method="get"><input id="get_date" name="date" class="hidden">
+                    <ul id="dropdown-filter-date" class="dropdown-content">
+                        <li onclick="document.getElementById('get_date').value = 'Новые';document.getElementById('form_date').submit();"><a>Новые</a></li>
+                        <li onclick="document.getElementById('get_date').value = 'Старые';document.getElementById('form_date').submit();"><a>Старые</a></li>
+                    </ul>
+                    </form>
+                    <div class="filter-date" onclick="openFilter('filter-date')">
+                        <a id="filter-date" class="dropdown-trigger" data-target="dropdown-filter-date">Дата</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="page container">
+        {% if servers %}
+        {% for server in servers %}
+        <div class="row server-support" onmouseover="hoverServer('#server-rating-{{ server.id }}', '#server-chart-{{ server.id }}', '#server-verification-{{ server.id }}')" onmouseleave="unhoverServer('#server-rating-{{ server.id }}', '#server-chart-{{ server.id }}', '#server-verification-{{ server.id }}')">
+            <div id="server-rating-{{ server.id }}" class="server-rating">
+                <div class="server-rating-tip"></div><img class="server-rating-icon" src="{% static 'ASSETS/star.svg' %}">{{ server.rate }}
+            </div>
+            {% if server.verification %}
+            <div id="server-verification-{{ server.id }}" class="server-verification">
+                <img class="server-verification-icon" src="{% static 'ASSETS/verification.svg' %}">
+            </div>
+            {% endif %}
+            {% if server.rate > server.rate_old %}
+            <div id="server-chart-{{ server.id }}" class="server-chart">
+                <img class="server-chart-icon" src="{% static 'ASSETS/rate-chart-true.svg' %}">
+            </div>
+            {% elif server.rate < server.rate_old %}
+            <div id="server-chart-{{ server.id }}" class="server-chart">
+                <img class="server-chart-icon" src="{% static 'ASSETS/rate-chart-false.svg' %}">
+            </div>
+            {% endif %}
+            <div class="server" {% if server.premium_status == True %}type="{{ server.premium_color.title }}{% endif %}">
+                {% if server.premium_status == True %}
+                <div class="{% if server.premium_color.title == 'Голубой' %}gradient-blue
+                {% elif server.premium_color.title == 'Красный' %}gradient-red
+                {% elif server.premium_color.title == 'Фиолетовый' %}gradient-purple
+                {% elif server.premium_color.title == 'Оранжевый' %}gradient-orange
+                {% elif server.premium_color.title == 'Зеленый' %}gradient-green
+                {% elif server.premium_color.title == 'Розовый' %}gradient-pink{% endif %}"></div>
+                {% endif %}
+                <div class="col l4 s12 server-plate-one">
+                    <div class="server-module" onclick="{% if request.path == '/servers/' %}openServer({{ server.id }}){% else %}openServer('servers/' + {{ server.id }}){% endif %}" style="cursor:pointer;">
+                        <p class="server-title">{{ server.name|truncatechars:30 }}</p>
+                        <p class="server-description text-color-gray">{{ server.description|truncatechars:90 }}</p>
+                    </div>
+                </div>
+                <div class="col l4 s12 server-plate-two hide-on-med-and-down">
+                    <div style="background-image: url('{% static 'media/' %}{{ server.icon.image }}');"></div>
+                    <!--<img class="server-picture" src="{% static 'media/' %}{{ server.icon.image }}">-->
+                </div>
+                <div class="col l4 s12 server-plate-three">
+                    <div class="row">
+                        <div class="col l2 m2 s2 server-online" style="padding-top: 8px;">
+                            <a><i class="material-icons">people</i>
+                            <p>{{ server.current_players }}</p>
+                        </div>
+                        <div class="col l10 m9 s10 server-plate-three-support">
+                            <div class="row">
+                                {% if server.launcher == True %}
+                                <div class="col l12 s12 server-ip" onclick="getIP('{{ server.website }}')" style="cursor:pointer">
+                                    <h6 class="center">Лаунчер</h6>
+                                </div>
+                                {% else %}
+                                    {% if server.port == "25565" %}
+                                    <div class="col l12 s12 server-ip" onclick="copyIP('#{{ server.id }}')" style="cursor:pointer;">
+                                        <h6 id="{{ server.id }}" class="center">{{ server.ip }}</h6>
+                                    </div>
+                                    {% else %}
+                                    <div class="col l12 s12 server-ip" onclick="copyIP('#{{ server.id }}')" style="cursor:pointer;">
+                                        <h6 id="{{ server.id }}" class="center">{{ server.ip }}:{{ server.port }}</h6>
+                                    </div>
+                                    {% endif %}
+                                {% endif %}
+                                <div class="col l12 m12 s12 server-line">
+                                    {% if server.premium_status == True %}
+                                        {% if server.rate > 100 %}
+                                        <div class="server-line-{{ server.premium_color.shadow }}" style="animation:server-line-animation;animation-duration:1.5s;width:100%;"><style>@-webkit-keyframes server-line-animation{0%{ width: 0% }100%{width:{{ server.rate }}}}</style></div>
+                                        {% else %}
+                                        <div class="server-line-{{ server.premium_color.shadow }}" style="animation:server-line-animation;animation-duration:2.5s;width:{{ server.rate }}%;"><style>@-webkit-keyframes server-line-animation{0%{ width: 0% }100%{width:{{ server.rate }}}}</style></div>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if server.rate > 100 %}
+                                        <div class="server-line-gray" style="width:100%;"><style>@-webkit-keyframes server-line-animation{0%{ width: 0% }100%{width:{{ server.rate }}}}</style></div>
+                                        {% else %}
+                                        <div class="server-line-gray" style="animation:server-line-animation;animation-duration:2.5s;width:{{ server.rate }}%;"><style>@-webkit-keyframes server-line-animation{0%{ width: 0% }100%{width:{{ server.rate }}}}</style></div>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+        <div class="server-container-servers-empty">
+            <img class="privatearea-container-panel-servers-picture-empty" src="{% static 'ASSETS/cloud-empty.svg' %}">Ничего нет!
+        </div>
+        {% endif %}
+    </div>
+
+    {% if not request.GET %}
+    <div class="container center">
+        <div class="pagination-pages">
+            <form id="page_form" action="" method="get">
+                <input id="page" name="page" style="visibility: hidden">
+                <a class="link active" onclick="document.getElementById('page').value='1';document.getElementById('page_form').submit();">1</a>
+                <a class="link" onclick="document.getElementById('page').value='2';document.getElementById('page_form').submit();">2</a>
+                <a class="link" onclick="document.getElementById('page').value='3';document.getElementById('page_form').submit();">3</a>
+            </form>
+        </div>
+    </div>
+    {% elif request.GET.page %}
+    <div class="container center">
+        <div class="pagination-pages">
+            <form id="page_form" action="" method="get">
+                <input id="page" name="page" style="visibility: hidden">
+                <a class="link {% if request.GET.page == '1' %}active{% endif %}" onclick="document.getElementById('page').value='1';document.getElementById('page_form').submit();">1</a>
+                <a class="link {% if request.GET.page == '2' %}active{% endif %}" onclick="document.getElementById('page').value='2';document.getElementById('page_form').submit();">2</a>
+                <a class="link {% if request.GET.page == '3' %}active{% endif %}" onclick="document.getElementById('page').value='3';document.getElementById('page_form').submit();">3</a>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+
+{% endblock main %}

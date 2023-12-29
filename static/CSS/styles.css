@@ -1278,14 +1278,14 @@ body {
 }
 
 .dropdown-content li a {
-    font-family: 'Nunito Sans', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: 14.5px;
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
     background: #fff;
-    color: #808080;
+    color: #3A4E57;
 }
 
-.dropdown-content li a:hover {
+.dropdown-content li:hover a {
     color: #11B2FF;
 }
 
@@ -1364,6 +1364,7 @@ body {
     border-radius: 12px;
     padding-top: 30px;
     background: url('../ASSETS/cloud-bg.png') repeat-x 0 / 300% auto;
+    background-color: #fff;
     animation: cloud-bg 60s linear infinite;
 }
 
@@ -1519,7 +1520,7 @@ rain {
 }
 
 .reg-form {
-    margin-top: -15px;
+    margin-top: -30px;
 }
 
 .server-ip-icon {
@@ -2048,17 +2049,17 @@ rain {
 }
 
 .nav-logo {
-    font-family: 'Montserrat' !important;
+    font-family: 'TT Norms Pro', sans-serif !important;
     text-transform: none;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 28px;
-    margin-top: 5px;
+    margin-top: 4px;
 }
 
 @media only screen and (max-width: 601px) {
     .nav-logo {
-        font-family: 'Montserrat' !important;
+        font-family: 'TT Norms Pro', sans-serif !important;
         text-transform: none;
         font-style: normal;
         font-weight: 700;
@@ -2152,9 +2153,120 @@ rain {
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
 }
 
+@media only screen and (max-width: 993px) {
+    .filter-version {
+        font-family: 'TT Norms Pro', sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        text-transform: uppercase;
+        height: 3rem;
+        background: #fff;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        border-radius: 12px;
+        padding: 10px;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+    .filter-version a {
+        font-size: 14px;
+    }
+
+    .filter-type {
+        font-family: 'TT Norms Pro', sans-serif;
+        font-weight: 700;                          
+        font-style: normal;
+        text-transform: uppercase;
+        height: 3rem;
+        background: #fff;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        border-radius: 12px;
+        padding: 10px;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+    .filter-type a {
+        font-size: 14px;
+    }
+
+    .filter-peculiarities {
+        font-family: 'TT Norms Pro', sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        text-transform: uppercase;
+        height: 3rem;
+        background: #fff;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        border-radius: 12px;
+        padding: 10px;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+    .filter-peculiarities a {
+        font-size: 14px;
+    }
+
+    .filter-online {
+        font-family: 'TT Norms Pro', sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        text-transform: uppercase;
+        height: 3rem;
+        background: #fff;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        border-radius: 12px;
+        padding: 10px;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+    .filter-online a {
+        font-size: 14px;
+    }
+
+    .filter-rating {
+        font-family: 'TT Norms Pro', sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        text-transform: uppercase;
+        height: 3rem;
+        background: #fff;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        border-radius: 12px;
+        padding: 10px;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+    .filter-rating a {
+        font-size: 14px;
+    }
+
+    .filter-date {
+        font-family: 'TT Norms Pro', sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        text-transform: uppercase;
+        height: 3rem;
+        background: #fff;
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        border-radius: 12px;
+        padding: 10px;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+    .filter-date a {
+        font-size: 14px;
+    }
+}
+
 .filter-version {
-    font-family: 'TTNormsMedium';
-    font-style: normal;
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
     height: 3rem;
     background: #fff;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
@@ -2162,69 +2274,6 @@ rain {
     border-radius: 12px;
     padding: 10px;
     cursor: pointer;
-}
-
-@media only screen and (max-width: 993px) {
-    .filter-version {
-        font-family: 'TTNormsMedium';
-        font-style: normal;
-        height: 3rem;
-        background: #fff;
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
-        text-align: center;
-        border-radius: 12px;
-        padding: 10px;
-        margin-bottom: 15px;
-        cursor: pointer;
-    }
-    .filter-type {
-        font-family: 'TTNormsMedium';
-        font-style: normal;
-        height: 3rem;
-        background: #fff;
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
-        text-align: center;
-        border-radius: 12px;
-        padding: 10px;
-        margin-bottom: 15px;
-        cursor: pointer;
-    }
-    .filter-peculiarities {
-        font-family: 'TTNormsMedium';
-        font-style: normal;
-        height: 3rem;
-        background: #fff;
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
-        text-align: center;
-        border-radius: 12px;
-        padding: 10px;
-        margin-bottom: 15px;
-        cursor: pointer;
-    }
-    .filter-online {
-        font-family: 'TTNormsMedium';
-        font-style: normal;
-        height: 3rem;
-        background: #fff;
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
-        text-align: center;
-        border-radius: 12px;
-        padding: 10px;
-        margin-bottom: 15px;
-        cursor: pointer;
-    }
-    .filter-date {
-        font-family: 'TTNormsMedium';
-        font-style: normal;
-        height: 3rem;
-        background: #fff;
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
-        text-align: center;
-        border-radius: 12px;
-        padding: 10px;
-        margin-bottom: 15px;
-        cursor: pointer;
-    }
 }
 
 .filter-version .dropdown-content {
@@ -2237,6 +2286,7 @@ rain {
 
 .filter-version a {
     color: #3A4E57;
+    font-size: 14px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -2247,8 +2297,9 @@ rain {
 }
 
 .filter-type {
-    font-family: 'TTNormsMedium';
-    font-style: normal;
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
     height: 3rem;
     background: #fff;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
@@ -2268,6 +2319,7 @@ rain {
 
 .filter-type a {
     color: #3A4E57;
+    font-size: 14px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -2278,8 +2330,9 @@ rain {
 }
 
 .filter-peculiarities {
-    font-family: 'TTNormsMedium';
-    font-style: normal;
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
     height: 3rem;
     background: #fff;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
@@ -2299,6 +2352,7 @@ rain {
 
 .filter-peculiarities a {
     color: #3A4E57;
+    font-size: 14px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -2309,8 +2363,9 @@ rain {
 }
 
 .filter-online {
-    font-family: 'TTNormsMedium';
-    font-style: normal;
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
     height: 3rem;
     background: #fff;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
@@ -2330,6 +2385,7 @@ rain {
 
 .filter-online a {
     color: #3A4E57;
+    font-size: 14px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -2340,8 +2396,9 @@ rain {
 }
 
 .filter-rating {
-    font-family: 'TTNormsMedium';
-    font-style: normal;
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
     height: 3rem;
     background: #fff;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
@@ -2361,6 +2418,7 @@ rain {
 
 .filter-rating a {
     color: #3A4E57;
+    font-size: 14px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -2371,8 +2429,9 @@ rain {
 }
 
 .filter-date {
-    font-family: 'TTNormsMedium';
-    font-style: normal;
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
     height: 3rem;
     background: #fff;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.05);
@@ -2392,6 +2451,7 @@ rain {
 
 .filter-date a {
     color: #3A4E57;
+    font-size: 14px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -2580,7 +2640,7 @@ rain {
     }
 
     .welcome-servers p {
-        font-family: 'TTNormsMedium';
+        font-family: 'TT Norms Pro', sans-serif;
         font-size: 19px !important;
         color: rgba(38, 38, 38, 0.87);
         margin-top: 15px !important;
@@ -6104,14 +6164,15 @@ input[value="Подтвердить"] {
     bottom: 4%;
     right: 1.5%;
     padding-left: 18px;
-    padding-right: 18px;
+    padding-right: 25px;
     padding-bottom: 7px;
     z-index: 999;
 }
 
 .welcome-servers p {
-    font-family: 'TTNormsMedium';
-    font-size: 16px;
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
     color: rgba(38, 38, 38, 0.87);
     margin-top: 12px;
     margin-bottom: 10px;

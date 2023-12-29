@@ -80,6 +80,9 @@ function changeVersion(text, element) {
     } else if (element.value == "1.18.X") {
         text.innerText = "1.19.X";
         element.value = "1.19.X";
+    } else if (element.value == "1.19.X") {
+        text.innerText = "1.20.X";
+        element.value = "1.20.X";
     } else {
         text.innerText = "1.7.X";
         element.value = "1.7.X";

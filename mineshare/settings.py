@@ -24,6 +24,7 @@ ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_UNIQUE_EMAIL = True
 
 LOGIN_REDIRECT_URL = 'http://127.0.0.1/account/'
 LOGOUT_REDIRECT_URL = '/'
@@ -137,15 +138,11 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SOCIALACCOUNT_LOGIN_ON_GET = True
-
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
+        'APP': {
+            'client_id': os.getenv("GOOGLE_ID"),
+            'secret': os.getenv("GOOGLE_SECRET"),
         }
     }
 }

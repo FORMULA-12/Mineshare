@@ -21,6 +21,10 @@ def terms(request):
     return FileResponse(open(os.path.join(settings.BASE_DIR, 'templates/terms.pdf'), 'rb'), content_type='application/pdf')
 
 
+def privacy(request):
+    return FileResponse(open(os.path.join(settings.BASE_DIR, 'templates/privacy.pdf'), 'rb'), content_type='application/pdf')
+
+
 def partners(request):
     return render(request, 'partners.html')
 

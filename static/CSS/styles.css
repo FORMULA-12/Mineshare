@@ -6205,6 +6205,7 @@ input[value="Подтвердить"] {
     margin-left: auto;
     margin-right: auto;
     text-align: left !important;
+    user-select: none;
 }
 
 .google-auth img {
